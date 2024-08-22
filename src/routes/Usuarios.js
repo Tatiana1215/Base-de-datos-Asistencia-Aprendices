@@ -28,7 +28,6 @@ check('Password','La contraseña debe tener minimo 10 caracteres y maximo 15').i
 check('Nombre','El campo es obligatorio').notEmpty(),
 check('Nombre','El Nombre debe tener maximo 30 caracteres').isLength({max:30}),
 validarCampos,
-// validarJWT
 ],httpUsarios.postUsuario)
 
 // --------------------------------------------------------------------------------------------------------------------------------------
@@ -39,20 +38,19 @@ routers.post('/login',[
     check('Password','La contraseña debe tener minimo 10 caracteres y maximo 15').isLength({min:10, max:15}),
     // check('Password').custom()
     validarCampos,
-    // validarJWT
 ], httpUsarios.postLogin)
 
-// Ruta para solicitar recuperación de contraseña-----------------------------------------------------------------------------------------
-routers.post('/solicitar-recuperacion', [
-    // validarJWT
-],httpUsarios.solicitarRecuperacionContrasena);
+// // Ruta para solicitar recuperación de contraseña-----------------------------------------------------------------------------------------
+// routers.post('/solicitar-recuperacion', [
+//     // validarJWT
+// ],httpUsarios.solicitarRecuperacionContrasena);
 
-// Ruta para restablecer la contraseña-----------------------------------------------------------------------------------------------------
-routers.post('/reset/:token', [
-    // validarJWT
-],httpUsarios.restablecerContrasena);
+// // Ruta para restablecer la contraseña-----------------------------------------------------------------------------------------------------
+// routers.post('/reset/:token', [
+//     // validarJWT
+// ],httpUsarios.restablecerContrasena);
 
-// -----------------------------------------------------------------------------------------------------------------------------------------
+// // -----------------------------------------------------------------------------------------------------------------------------------------
 routers.put("/Actualizar/:id",[
     check('id','El id no es valido').isMongoId(),
     check('Email').custom(usuarioHelper.existsEmail),
